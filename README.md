@@ -10,18 +10,32 @@ This is an automation framework designed for testing an sample e-commerce applic
 
 
 ## Folder Structure
-<img width="351" alt="image" src="https://github.com/user-attachments/assets/239188af-f90c-4d59-bf69-ccbe571ba658">
 
+# Playwright Automation Framework Using JavaScript
 
-```markdown
-* fixtures           - Contains Playwright fixtures for test setup.
-* pageobjects        - Contains page object classes for the application.
-* utils              - Utility functions and helpers.
-* testdata           - JSON files containing test data.
-* tests              - Test scripts utilizing the page objects and fixtures.
-* .env               - Environment variables configuration.
-* playwright.config  - Configuration file for Playwright.
-```
+## Overview
+This is an automation framework designed for testing a sample e-commerce application developed using Magento using Playwright. The framework follows the Page Object Model (POM) design pattern to enhance code reusability and maintainability.
+
+## Technologies Used
+- **Node.js**: JavaScript runtime environment.
+- **Playwright**: Automation library for browser testing.
+- **DotEnv**: For handling multiple environments.
+
+## Folder Structure
+```plaintext
+.
+├── src
+│   ├── fixtures        # Contains Playwright fixtures for test setup.
+│   ├── pageobjects     # Contains page object classes for the application.
+├── utils               # Utility functions and helpers.
+├── testdata            # JSON files containing test data.
+├── tests               # Test scripts utilizing the page objects and fixtures.
+│   ├── ally.spec.js            # Contains tests related to accessibility.
+│   ├── e2e-fixtures.spec.js     # Contains end-to-end tests using fixtures.
+│   └── e2e-pages.spec.js        # Contains end-to-end tests using page managers.
+├── .env                # Environment variables configuration.
+└── playwright.config.js # Configuration file for Playwright.
+
 
 ## Setup and Installation
 
