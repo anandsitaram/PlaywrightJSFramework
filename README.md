@@ -13,13 +13,15 @@ This is an automation framework designed for testing an sample e-commerce applic
 <img width="351" alt="image" src="https://github.com/user-attachments/assets/239188af-f90c-4d59-bf69-ccbe571ba658">
 
 
-fixtures        # Contains Playwright fixtures for test setup.
-pageobjects     # Contains page object classes for the application.
-utils           # Utility functions and helpers.
-testdata        # JSON files containing test data.
-tests           # Test scripts utilizing the page objects and fixtures.
-.env            # Environment variables configuration.
-playwright.config # Configuration file for Playwright.
+```markdown
+fixtures        - Contains Playwright fixtures for test setup.
+pageobjects     - Contains page object classes for the application.
+utils           - Utility functions and helpers.
+testdata        - JSON files containing test data.
+tests           - Test scripts utilizing the page objects and fixtures.
+.env            - Environment variables configuration.
+playwright.config - Configuration file for Playwright.
+```
 
 ## Setup and Installation
 
