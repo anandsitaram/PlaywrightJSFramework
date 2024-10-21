@@ -1,44 +1,67 @@
-class ProductDetailPage{
-
-    constructor(page){
-        this.page=page
-        this.productName=this.page.locator("h1[class='page-title'] span")
-        this.productPrice=this.page.locator("div[class='product-info-price'] >>span[class='price']")
-        this.productQty=this.page.locator("#qty")
-        this.addToCartBtn=this.page.locator("#product-addtocart-button")
-        this.countNumber=this.page.locator(".counter-number")
-
+import { BasePage } from './BasePage';
+class ProductDetailPage extends BasePage {
+    constructor(page) {
+        super(page);
+        this.productName = this.page.locator("h1[class='page-title'] span");
+        this.productPrice = this.page.locator("div[class='product-info-price'] >> span[class='price']");
+        this.productQty = this.page.locator("#qty");
+        this.addToCartBtn = this.page.locator("#product-addtocart-button");
+        this.countNumber = this.page.locator(".counter-number");
     }
 
-    async getProductName(){
+    /**
+     * Gets the name of the product.
+     * @returns {Promise<string>} The product name as a string.
+     */
+    async getProductName() {
         return await this.productName.textContent();
     }
 
-    async getProductPrice(){
+    /**
+     * Gets the price of the product.
+     * @returns {Promise<string>} The product price as a string.
+     */
+    async getProductPrice() {
         return await this.productPrice.textContent();
     }
 
-    async selectProductSize(size){
-        await this.page.locator("div[option-label='"+size+"']").click()
-
+    /**
+     * Selects the product size.
+     * @param {string} size - The size of the product to select.
+     */
+    async selectProductSize(size) {
+        await this.page.locator(`div[option-label='${size}']`).click();
     }
 
-    async selectProductColor(color){
-        await this.page.locator("div[option-label='"+color+"']").click()
-    }
-    async selectQty(qty){
-        await this.productQty.fill(qty)
-    }
-
-    async addTheProduct(){
-        await  this.addToCartBtn.click();
+    /**
+     * Selects the product color.
+     * @param {string} color - The color of the product to select.
+     */
+    async selectProductColor(color) {
+        await this.page.locator(`div[option-label='${color}']`).click();
     }
 
-    async waitForCountNumber(){
-        await this.countNumber.waitFor({state:'visible'})
+    /**
+     * Fills the quantity input with the specified quantity.
+     * @param {string} qty - The quantity to set for the product.
+     */
+    async selectQty(qty) {
+        await this.productQty.fill(qty);
     }
-    
+
+    /**
+     * Clicks the "Add to Cart" button to add the product to the cart.
+     */
+    async addProductToCart() {
+        await this.addToCartBtn.click();
+    }
+
+    /**
+     * Waits for the cart item count to be visible.
+     */
+    async waitForCountNumber() {
+        await this.countNumber.waitFor({ state: 'visible' });
+    }
 }
 
-
-module.exports={ProductDetailPage}
+module.exports = { ProductDetailPage };

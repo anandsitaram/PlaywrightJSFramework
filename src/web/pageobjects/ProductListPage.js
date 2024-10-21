@@ -1,18 +1,19 @@
-class ProductListPage {
-    constructor(page) {
-        this.page = page;
-    }
+import { BasePage } from './BasePage';
+class ProductListPage extends BasePage {
+  constructor(page) {
+      super(page);
+  }
 
-    // Method to click on a product by its name
-    async clickOnProduct(productName) {
+  /**
+   * Clicks on a product by its name.
+   * @param {string} productName - The name of the product to click on.
+   */
+  async clickOnProduct(productName) {
       const specificProduct = this.page.locator("strong[class*='product name'] [class='product-item-link']").filter({ hasText: productName });
-
-      // Wait for the specific product to be visible
+      
       await specificProduct.waitFor({ state: 'visible' });
-
-      // Click on the specific product
       await specificProduct.click();
-    }
+  }
 }
 
 module.exports = { ProductListPage };

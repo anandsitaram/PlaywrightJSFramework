@@ -1,66 +1,47 @@
-// class HomePage{
+import { BasePage } from './BasePage';
 
-//     constructor(page){
-//         this.page=page;
-//         this.men=page.locator("//span[text()='Men']/ancestor::a")
-//         this.top=page.getByText("Tops")
-//         this.tanks=page.getByRole('menuitem', { name: 'Tanks' })
-
-//     }
-
-//     async goTo(){
-//         await this.page.goto("https://magento.softwaretestingboard.com/");
-//         await this.page.waitForLoadState("networkidle");
-
-//     }
-
-//    async navigateToTanksPage(){
-//     await  this.men.hover();
-//     await  this.top.last().hover();
-//     await this.tanks.click();
-//     await this.page.waitForLoadState("networkidle");
-
-//     }
-
-
-// }
-
-// module.exports={HomePage}
-
-class HomePage {
+class HomePage extends BasePage {
     constructor(page) {
-        this.page = page;
+        super(page);
     }
 
-    async goTo() {
-        await this.page.goto("https://magento.softwaretestingboard.com/");
-        await this.page.waitForLoadState("networkidle");
-    }
-
-    // Method to hover on the main menu
+    /**
+     * Hover over a main menu item.
+     * @param {string} mainMenuName - The name of the main menu to hover over.
+     * @throws Will throw an error if the main menu item is not found or not visible.
+     */
     async mouseHoverOnMainMenu(mainMenuName) {
-        const mainMenu = this.page.locator(`//span[text()='${mainMenuName}']/ancestor::a`);
-        await mainMenu.waitFor({ state: 'visible' });
-        await mainMenu.hover();
-    }
-
-    // Method to hover on the sub-menu and click the specified item
-    async mouseHoverOnSubMenu(mainMenuName, subMenuItem) {
-        const mainMenuLoc = this.page.getByText(mainMenuName).last();
-        
-        // Wait for the main menu to be visible and hover
-        await mainMenuLoc.waitFor({ state: 'visible' });
-        await mainMenuLoc.hover();
-    
-        // Check if subMenuItem is provided
-        if (subMenuItem) {
-            // Locate the submenu item and wait for it to be visible
-            const subMenuLoc = this.page.getByRole('menuitem', { name: subMenuItem });
-            await subMenuLoc.waitFor({ state: 'visible' });
-            await subMenuLoc.click();
+        try {
+            const mainMenu = this.page.locator(`//span[text()='${mainMenuName}']/ancestor::a`);
+            await mainMenu.waitFor({ state: 'visible', timeout: 5000 }); // Wait for the main menu to be visible
+            await mainMenu.hover();
+        } catch (error) {
+            throw new Error(`Failed to hover on main menu '${mainMenuName}': ${error.message}`);
         }
     }
 
+    /**
+     * Hover over a main menu item and click a sub-menu item if provided.
+     * @param {string} mainMenuName - The name of the main menu to hover over.
+     * @param {string} [subMenuItem] - The name of the sub-menu item to click (optional).
+     * @throws Will throw an error if the main menu or sub-menu item is not found or not visible.
+     */
+    async mouseHoverOnSubMenu(mainMenuName, subMenuItem) {
+        try {
+            const mainMenuLoc = this.page.getByText(mainMenuName).last();
+             // Wait for the main menu to be visible and hover
+                await mainMenuLoc.waitFor({ state: 'visible' });
+                await mainMenuLoc.hover();            
+            if (subMenuItem) {
+                // Locate the submenu item and wait for it to be visible, then click
+                const subMenuLoc = this.page.getByRole('menuitem', { name: subMenuItem });
+                await subMenuLoc.waitFor({ state: 'visible', timeout: 5000 }); // Wait for the sub-menu to be visible
+                await subMenuLoc.click();
+            }
+        } catch (error) {
+            throw new Error(`Failed to hover on sub-menu '${subMenuItem}' under main menu '${mainMenuName}': ${error.message}`);
+        }
+    }
 }
 
-module.exports={HomePage}
+module.exports = { HomePage };

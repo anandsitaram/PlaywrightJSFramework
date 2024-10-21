@@ -5,22 +5,23 @@ class MenuPage {
         this.checkoutButtonLocator = page.locator("button[id*='top-cart-btn-checkout']");
     }
 
+    /**
+     * Opens the cart by clicking the cart icon after waiting for it to be attached to the DOM.
+     */
     async openCart() {
-        await this.page.waitForTimeout(2000)
+        await this.page.waitForTimeout(2000);  // Small timeout to ensure UI stability
         await this.cartLinkLocator.waitFor({ state: 'attached' });
         await this.cartLinkLocator.click();
     }
 
-    async waitForCheckoutButton() {
-        // Wait for the checkout button to be attached to the DOMy
-        await this.checkoutButtonLocator.waitFor({ state: 'attached' });
-    }
-
+    /**
+     * Waits for and clicks the checkout button.
+     */
     async clickCheckoutButton() {
-        // Wait for the checkout button to be visible before clicking
+        // Wait for the checkout button to be attached and visible, then click it
         await this.checkoutButtonLocator.waitFor({ state: 'visible' });
         await this.checkoutButtonLocator.click();
     }
 }
 
-module.exports = {MenuPage};
+module.exports = { MenuPage };

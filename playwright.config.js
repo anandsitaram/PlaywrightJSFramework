@@ -10,6 +10,17 @@ const { defineConfig, devices } = require('@playwright/test');
 /**
  * @see https://playwright.dev/docs/test-configuration
  */
+
+const config=require('dotenv')
+
+const env = process.env.env || 'qa';
+const envFilePath=`./.env/.env.${env}`;
+config.config({
+  path:envFilePath,
+  override:true
+})
+
+
 module.exports = defineConfig({
   testDir: './tests',
   /* Run tests in files in parallel */

@@ -2,20 +2,21 @@ import { test, expect } from "@playwright/test";
 
 const DateUtils = require('../utils/DateUtils')
 const RandomUtils = require('../utils/RandomUtils');
-const { PageManager } = require('../src/web/pageobjects/PageManager');
+const { PageManager } = require('../src/web/pagemanagers/PageManager');
 const testData=JSON.parse(JSON.stringify(require('../testdata/data.json')))
 
 
 test("New User", async ({ browser }) => {
     const product = testData.product
     const qty = testData.qty
+    console.log(process.env.url)
     console.log(testData.size)
     console.log(testData.color)
     const context = await browser.newContext();
     const page = await context.newPage();
   const pageManager=new PageManager(page)
     const homePage = pageManager.getHomePage();
-    await homePage.goTo();
+    await homePage.launchApplication()
     await homePage.mouseHoverOnMainMenu('Men');
     await homePage.mouseHoverOnSubMenu('Tops', 'Tanks');
 
@@ -29,17 +30,16 @@ test("New User", async ({ browser }) => {
     await productDetailPage.selectProductSize(testData.size);
     await productDetailPage.selectProductColor(testData.color);
     await productDetailPage.selectQty(qty);
-    await productDetailPage.addTheProduct();
+    await productDetailPage.addProductToCart();
     await productDetailPage.waitForCountNumber();
 
     const menuPage = pageManager.getMenuPage()
     await menuPage.openCart();
-    await menuPage.waitForCheckoutButton();
     await menuPage.clickCheckoutButton();
 
     // Checkout Screen
     const checkoutPage = pageManager.getCheckoutPage()
-    await checkoutPage.waitTillPageLoaded();
+    await checkoutPage.waitForPageToLoad();
 
     const currentDate = DateUtils.getCurrentDate();
     const addressData = {
@@ -59,7 +59,7 @@ test("New User", async ({ browser }) => {
 
     // Review
     const reviewPage = pageManager.getReviewPage()
-    await reviewPage.waitTillPageLoaded();
+    await reviewPage.waitForPageToLoad();
 
     // Using expect(locator).toHaveText(expected)
     await expect(reviewPage.qtyTxt).toHaveText(qty);
@@ -69,7 +69,7 @@ test("New User", async ({ browser }) => {
 
     // Thank you for your purchase!
     const orderSuccessPage = pageManager.getOrderSuccessPage()
-    await orderSuccessPage.waitTillPageLoaded();
+    await orderSuccessPage.waitForPageToLoad();
 
     const orderNo = await orderSuccessPage.getOrderNo();
     console.log(`The order number is ${orderNo}`);
