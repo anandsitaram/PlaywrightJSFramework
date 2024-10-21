@@ -52,7 +52,7 @@ npm install
 
 3. **Configuration**:
  ```bash
-Test Data: The test data is stored in the data/testData.json file. Update this file with the necessary data for your tests.
+Test Data: The test data is stored in the testData.json file.
 Running Tests
 ```
 4. **Running Tests**:
