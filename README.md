@@ -14,13 +14,13 @@ This is an automation framework designed for testing an sample e-commerce applic
 
 
 ```markdown
-fixtures        - Contains Playwright fixtures for test setup.
-pageobjects     - Contains page object classes for the application.
-utils           - Utility functions and helpers.
-testdata        - JSON files containing test data.
-tests           - Test scripts utilizing the page objects and fixtures.
-.env            - Environment variables configuration.
-playwright.config - Configuration file for Playwright.
+* fixtures           - Contains Playwright fixtures for test setup.
+* pageobjects        - Contains page object classes for the application.
+* utils              - Utility functions and helpers.
+* testdata           - JSON files containing test data.
+* tests              - Test scripts utilizing the page objects and fixtures.
+* .env               - Environment variables configuration.
+* playwright.config  - Configuration file for Playwright.
 ```
 
 ## Setup and Installation
@@ -29,13 +29,19 @@ playwright.config - Configuration file for Playwright.
  ```bash
 npm install
 ```
+2. **Tests**:
+```bash
+* ally.spec.js            - Contains tests related to accessbility
+* e2e-fixtures.spec.js    - Contains end to end tests using fixtures
+* e2e-pages.spec          - Contains end to end tests using page managers
+```
 
-2. **Configuration**:
+3. **Configuration**:
  ```bash
 Test Data: The test data is stored in the data/testData.json file. Update this file with the necessary data for your tests.
 Running Tests
 ```
-3. **Running Tests**:
+4. **Running Tests**:
  ```bash
 ## **Playwright Test Execution**
 
