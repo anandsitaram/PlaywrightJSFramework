@@ -43,8 +43,6 @@ Running Tests
 ```
 4. **Running Tests**:
  ```bash
-## **Playwright Test Execution**
-
 * Headless mode -
 **npx playwright test**
 
