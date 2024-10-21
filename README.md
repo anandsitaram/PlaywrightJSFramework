@@ -10,14 +10,8 @@ This is an automation framework designed for testing an sample e-commerce applic
 
 
 ## Folder Structure
-.
-├── src
-│   ├── fixtures
-│   ├── pageobjects
-│   ├── utils
-│   ├── testdata
-│   └── tests
-└── .env
+<img width="146" alt="image" src="https://github.com/user-attachments/assets/239188af-f90c-4d59-bf69-ccbe571ba658">
+
 
 
 ## Setup and Installation
