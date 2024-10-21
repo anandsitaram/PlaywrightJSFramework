@@ -5,7 +5,7 @@ const RandomUtils = require('../utils/RandomUtils');
 const testData=JSON.parse(JSON.stringify(require('../testdata/data.json')))
 
 
-test("New User", async ({ homePage,productListPage,productDetailPage,checkoutPage,reviewPage,orderSuccessPage}) => {
+test("New User", {tags :['@newUser','@P1','@automated','@ui','@fixtures']},async ({ homePage,productListPage,productDetailPage,checkoutPage,reviewPage,orderSuccessPage}) => {
     const product = testData.product
     const qty = testData.qty
     await homePage.launchApplication()

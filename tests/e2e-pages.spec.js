@@ -6,7 +6,7 @@ const { PageManager } = require('../src/web/pagemanagers/PageManager');
 const testData=JSON.parse(JSON.stringify(require('../testdata/data.json')))
 
 
-test("New User", async ({ browser }) => {
+test("New User", {tags :['@newUser','@P1','@automated','@ui','@pageManager']},async ({ browser }) => {
     const product = testData.product
     const qty = testData.qty
     console.log(process.env.url)
