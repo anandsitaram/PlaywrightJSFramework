@@ -1,4 +1,4 @@
-Playwight Automation Framework using javascript
+# **Playwight Automation Framework using javascript**
 Overview
 This automation framework is designed for end-to-end testing of an e-commerce application built on the Magento platform.
 It leverages Playwright for browser automation and follows best practices in test automation, including the Page Object Model (POM) design pattern.
@@ -45,8 +45,7 @@ Copy code
 ├── /src
 │   ├── /fixtures          # Playwright test fixtures
 │   ├── /pageobjects      # Page Object Model classes
-│   ├── /utils            # Utility functions
-│   ├── /tests            # Test cases
+│   ├── /utils            # Utility functions           
 │   └── /data             # Test data files (e.g., JSON)
 ├── /README.md            # Project documentation
 └── package.json          # NPM configuration file
