@@ -1,83 +1,70 @@
-# **Playwight Automation Framework using javascript**
-Overview
-This automation framework is designed for end-to-end testing of an e-commerce application built on the Magento platform.
-It leverages Playwright for browser automation and follows best practices in test automation, including the Page Object Model (POM) design pattern.
+markdown
+Copy code
+# E-Commerce Automation Framework
 
-Table of Contents
-Features
-Prerequisites
-Installation
-Directory Structure
-Test Data
-Running Tests
-Adding New Tests
-Error Handling
-Contributing
-License
-Features
-End-to-end testing of key functionalities in the e-commerce application.
-Modular design using the Page Object Model for better maintainability.
-Reusable utility functions for reading test data.
-Support for both synchronous and asynchronous operations.
-Error handling to manage exceptions during test execution.
-Prerequisites
-Before you begin, ensure you have the following installed:
+## Overview
+This is an automation framework designed for testing an e-commerce application using Playwright. The framework follows the Page Object Model (POM) design pattern to enhance code reusability and maintainability.
 
-Node.js (v12 or later)
-npm (Node package manager)
-A modern web browser (e.g., Chrome, Firefox, Edge)
-Installation
-Clone the repository:
+## Table of Contents
+- [Technologies Used](#technologies-used)
+- [Folder Structure](#folder-structure)
+- [Setup and Installation](#setup-and-installation)
+- [Configuration](#configuration)
+- [Running Tests](#running-tests)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Technologies Used
+- **Node.js**: JavaScript runtime environment.
+- **Playwright**: Automation library for browser testing.
+- **Jest**: Testing framework for running tests.
+- **TypeScript**: Superset of JavaScript for static typing.
+- **Git**: Version control system.
+
+## Folder Structure
+├── src │ ├── fixtures │ │ └── Web-Fixtures.js │ ├── pageobjects │ │ ├── BasePage.js │ │ ├── CheckoutPage.js │ │ ├── HomePage.js │ │ ├── MenuPage.js │ │ ├── OrderSuccessPage.js │ │ ├── ProductDetailPage.js │ │ ├── ProductListPage.js │ │ └── ReviewPage.js │ ├── utils │ │ ├── DateUtils.js │ │ └── RandomUtils.js │ ├── data │ │ └── testData.json │ └── tests │ └── sampleTest.spec.js ├── package.json ├── README.md └── jest.config.js
 
 bash
 Copy code
-git clone https://github.com/yourusername/your-repo-name.git
-cd your-repo-name
-Install the dependencies:
+
+## Setup and Installation
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/your-repo/ecommerce-automation.git
+   cd ecommerce-automation
+Install dependencies:
 
 bash
 Copy code
 npm install
-Directory Structure
-bash
-Copy code
-/your-repo-name
-├── /src
-│   ├── /fixtures          # Playwright test fixtures
-│   ├── /pageobjects      # Page Object Model classes
-│   ├── /utils            # Utility functions           
-│   └── /data             # Test data files (e.g., JSON)
-├── /README.md            # Project documentation
-└── package.json          # NPM configuration file
-Test Data
-The test data is stored in JSON files located in the /src/data directory. You can create or modify test data files as needed. For example, testData.json can include product details, quantities, and shipping information.
+Setup environment variables: Create a .env file in the root directory and define the necessary environment variables (like WEB_URL).
 
-Example Test Data Structure
-json
-Copy code
-{
-    "product": "Rocco Gym Tank",
-    "qty": "4",
-    "color": "Blue",
-    "size": "XS",
-    "streetAddress": "6789 N Willi",
-    "city": "Portland",
-    "region": "Oregon",
-    "postCode": "986451",
-    "mobileNo": "1231231231",
-    "shippingMethod": "flatrate"
-}
+Configuration
+Test Data: The test data is stored in the data/testData.json file. Update this file with the necessary data for your tests.
+Jest Configuration: Modify the jest.config.js file as needed for your testing requirements.
 Running Tests
-To run the test suite, use the following command:
+Run the tests using the following command:
 
 bash
 Copy code
-npx playwright test
-You can also run specific test files or use tags to filter tests. Refer to the Playwright documentation for more options.
+npm test
+Contributing
+Contributions are welcome! Please follow these steps to contribute:
 
-Adding New Tests
-Create a new test file in the /src/tests directory.
-Import the necessary page objects and utilities.
-Use the existing test cases as a reference for structure and format.
-Error Handling
-The framework includes error handling mechanisms to manage exceptions that may occur during test execution. You can enhance this by adding custom error messages and logging.
+Fork the repository.
+Create a new branch (git checkout -b feature-branch).
+Make your changes and commit them (git commit -m 'Add some feature').
+Push to the branch (git push origin feature-branch).
+Create a pull request.
+License
+This project is licensed under the MIT License. See the LICENSE file for details.
+
+sql
+Copy code
+
+You can copy the entire content above into a new file named `README.md` in your project directory. Let me know if you need any adjustments or additional sections!
+
+
+
+
+
