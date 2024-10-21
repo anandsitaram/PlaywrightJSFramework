@@ -36,7 +36,7 @@ This is an automation framework designed for testing a sample e-commerce applica
 ├── .env                # Environment variables configuration.
 └── playwright.config.js # Configuration file for Playwright.
 
-
+```
 ## Setup and Installation
 
 1. **Install dependencies**:
