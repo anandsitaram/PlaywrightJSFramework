@@ -10,22 +10,19 @@ This is an automation framework designed for testing an sample e-commerce applic
 
 
 ## Setup and Installation
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/your-repo/ecommerce-automation.git
 
-2. **Install dependencies**:
-
+1. **Install dependencies**:
+ ```bash
 npm install
-
-3. **Configuration**:
-
+```
+2. **Configuration**:
+ ```bash
 Test Data: The test data is stored in the data/testData.json file. Update this file with the necessary data for your tests.
 Running Tests
-
-4. **Running Tests**:
-
+```
+3. **Running Tests**:
+ ```bash
 npx playwright test
-
+```
 
 
